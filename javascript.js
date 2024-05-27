@@ -59,39 +59,40 @@ const questions = [
     ],
   },
   {
-    question: "Which ocean is the smallest?", //7
+    question: "Which ocean is bordered by Europe, Asia, and North America?", //7
     answers: [
-      { text: "Atlantic Ocean", correct: false },
+      { text: "Atlantic Ocean", correct: true },
       { text: "Indian Ocean", correct: false },
       { text: "Southern Ocean", correct: false },
-      { text: "Arctic Ocean", correct: true },
+      { text: "Arctic Ocean", correct: false },
     ],
   },
   {
-    question: "Which ocean is the smallest?", //8
+    question:
+      "What is the term for the continuous movement of seawater in a particular direction?", //8
     answers: [
-      { text: "Atlantic Ocean", correct: false },
-      { text: "Indian Ocean", correct: false },
-      { text: "Southern Ocean", correct: false },
-      { text: "Arctic Ocean", correct: true },
+      { text: "Tide", correct: false },
+      { text: "Wave", correct: false },
+      { text: "Current", correct: true },
+      { text: "Swell", correct: false },
     ],
   },
   {
-    question: "Which ocean is the smallest?", //9
+    question: "Which ocean surrounds the continent of Antarctica?", //9
     answers: [
       { text: "Atlantic Ocean", correct: false },
       { text: "Indian Ocean", correct: false },
-      { text: "Southern Ocean", correct: false },
-      { text: "Arctic Ocean", correct: true },
+      { text: "Southern Ocean", correct: true },
+      { text: "Arctic Ocean", correct: false },
     ],
   },
   {
-    question: "Which ocean is the smallest?", //10
+    question: "What causes ocean tides?", //10
     answers: [
-      { text: "Atlantic Ocean", correct: false },
-      { text: "Indian Ocean", correct: false },
-      { text: "Southern Ocean", correct: false },
-      { text: "Arctic Ocean", correct: true },
+      { text: "Wind", correct: false },
+      { text: "Earth's rotation", correct: false },
+      { text: "Gravitational pull of the moon and th sun", correct: true },
+      { text: "Ocan current", correct: false },
     ],
   },
   {
