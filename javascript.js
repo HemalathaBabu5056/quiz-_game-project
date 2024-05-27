@@ -96,39 +96,41 @@ const questions = [
     ],
   },
   {
-    question: "Which ocean is the smallest?", //11
+    question: "Which ocean is the saltiest?", //11
     answers: [
-      { text: "Atlantic Ocean", correct: false },
+      { text: "Atlantic Ocean", correct: true },
       { text: "Indian Ocean", correct: false },
       { text: "Southern Ocean", correct: false },
-      { text: "Arctic Ocean", correct: true },
+      { text: "Arctic Ocean", correct: false },
     ],
   },
   {
-    question: "Which ocean is the smallest?", //12
+    question: "What is the process by which ocean water becomes salty?", //12
     answers: [
-      { text: "Atlantic Ocean", correct: false },
-      { text: "Indian Ocean", correct: false },
-      { text: "Southern Ocean", correct: false },
-      { text: "Arctic Ocean", correct: true },
+      { text: "Evaporation", correct: false },
+      { text: "Condensation", correct: false },
+      { text: "Precipitation", correct: false },
+      { text: "Weathering of rocks", correct: true },
     ],
   },
   {
-    question: "Which ocean is the smallest?", //13
+    question:
+      "Which is the longest mountain range in the world, mostly underwater?", //13
     answers: [
-      { text: "Atlantic Ocean", correct: false },
-      { text: "Indian Ocean", correct: false },
-      { text: "Southern Ocean", correct: false },
-      { text: "Arctic Ocean", correct: true },
+      { text: "Rocky Mountains", correct: false },
+      { text: "Andes Mountains", correct: false },
+      { text: "Mid-Atlantic Ridge", correct: true },
+      { text: "Himalayas", correct: false },
     ],
   },
   {
-    question: "Which ocean is the smallest?", //14
+    question:
+      "What is the largest type of seaweed found in the ocean, forming underwater forests?", //14
     answers: [
-      { text: "Atlantic Ocean", correct: false },
-      { text: "Indian Ocean", correct: false },
-      { text: "Southern Ocean", correct: false },
-      { text: "Arctic Ocean", correct: true },
+      { text: "Kelp", correct: true },
+      { text: "Algae", correct: false },
+      { text: "Phytoplankton", correct: false },
+      { text: "Coral", correct: false },
     ],
   },
 
