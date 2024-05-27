@@ -1,27 +1,28 @@
+
+
+
 const questions = [
   {
     question: "What is my name?",
-    answer: [
+    answers: [
       { text: "Hemalatha", correct: true },
       { text: "Hema", correct: false },
       { text: "Koushi", correct: false },
       { text: "Koushika", correct: false },
     ],
   },
-
   {
     question: "What is my name?",
-    answer: [
+    answers: [
       { text: "Hemalatha", correct: true },
       { text: "Hema", correct: false },
       { text: "Koushi", correct: false },
       { text: "Koushika", correct: false },
     ],
   },
-
   {
     question: "What is my name?",
-    answer: [
+    answers: [
       { text: "Hemalatha", correct: true },
       { text: "Hema", correct: false },
       { text: "Koushi", correct: false },
@@ -31,13 +32,12 @@ const questions = [
 ];
 
 const questionElement = document.getElementById("question");
-const answerButton = document.getElementById("answer-buttons");
+const answerButtonsElement = document.getElementById("answer-buttons");
 const nextButton = document.getElementById("next-btn");
 
 let currentQuestionIndex = 0;
 let score = 0;
 
-//function to start Quiz with question inndex 0 with sccore 0 and to display next button for next question
 function startQuiz() {
   currentQuestionIndex = 0;
   score = 0;
@@ -46,16 +46,70 @@ function startQuiz() {
 }
 
 function showQuestion() {
-let currentQuestion = questions[currentQuestionIndex];
-let questionNo = currwntQuestionIndex + 1;
-questionElement.innerHtml = questionNo + ". " + currentQuestion.question;
+  resetState();
+  const currentQuestion = questions[currentQuestionIndex];
+  const questionNo = currentQuestionIndex + 1;
+  questionElement.innerHTML = questionNo + ". " + currentQuestion.question;
 
-cureentQuestion.answers.forEach(answer => {
+  currentQuestion.answers.forEach((answer) => {
     const button = document.createElement("button");
     button.innerHTML = answer.text;
-    button.classList.add("btn");
-    answerButton.appendChild(button);
-
-});
+    button.classList.add(
+      "btn",
+      "btn-outline-dark",
+      "border",
+      "border-dark",
+      "p-2",
+      "mb-2",
+      "mx-4",
+      "w-50"
+    );
+    if (answer.correct) {
+      button.dataset.correct = answer.correct;
+    }
+    button.addEventListener("click", selectAnswer);
+    answerButtonsElement.appendChild(button);
+  });
 }
+
+function resetState() {
+  while (answerButtonsElement.firstChild) {
+    answerButtonsElement.removeChild(answerButtonsElement.firstChild);
+  }
+}
+
+function selectAnswer(e) {
+  const selectedButton = e.target;
+  const correct = selectedButton.dataset.correct === "true";
+  if (correct) {
+    score++;
+  }
+  Array.from(answerButtonsElement.children).forEach((button) => {
+    setStatusClass(button, button.dataset.correct === "true");
+  });
+}
+
+function setStatusClass(element, correct) {
+  clearStatusClass(element);
+  if (correct) {
+    element.classList.add("btn-success");
+  } else {
+    element.classList.add("btn-danger");
+  }
+}
+
+function clearStatusClass(element) {
+  element.classList.remove("btn-success");
+  element.classList.remove("btn-danger");
+}
+
+nextButton.addEventListener("click", () => {
+  currentQuestionIndex++;
+  if (currentQuestionIndex < questions.length) {
+    showQuestion();
+  } else {
+    alert("Quiz finished! Your score is: " + score);
+  }
+});
+
 startQuiz();
