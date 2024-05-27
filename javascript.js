@@ -3,30 +3,141 @@
 
 const questions = [
   {
-    question: "What is my name?",
+    question: "What is the largest ocean on Earth?", //1
     answers: [
-      { text: "Hemalatha", correct: true },
-      { text: "Hema", correct: false },
-      { text: "Koushi", correct: false },
-      { text: "Koushika", correct: false },
+      { text: "Atlantic Ocean", correct: false },
+      { text: " Indian Ocean", correct: false },
+      { text: "Pacific Ocean", correct: true },
+      { text: "Arctic Ocean", correct: false },
     ],
   },
   {
-    question: "What is my name?",
+    question: "Which ocean is the smallest?", //2
     answers: [
-      { text: "Hemalatha", correct: true },
-      { text: "Hema", correct: false },
-      { text: "Koushi", correct: false },
-      { text: "Koushika", correct: false },
+      { text: "Atlantic Ocean", correct: false },
+      { text: "Indian Ocean", correct: false },
+      { text: "Southern Ocean", correct: false },
+      { text: "Arctic Ocean", correct: true },
     ],
   },
   {
-    question: "What is my name?",
+    question:
+      "Which ocean is located between Africa, Asia, Australia, and Antarctica?", //3
     answers: [
-      { text: "Hemalatha", correct: true },
-      { text: "Hema", correct: false },
-      { text: "Koushi", correct: false },
-      { text: "Koushika", correct: false },
+      { text: "Atlantic Ocean", correct: false },
+      { text: "Indian Ocean", correct: true },
+      { text: "Southern Ocean", correct: false },
+      { text: "Arctic Ocean", correct: false },
+    ],
+  },
+  {
+    question: "What percentage of the Earth's surface is covered by oceans?", //4
+    answers: [
+      { text: "50%", correct: false },
+      { text: "60%", correct: false },
+      { text: "71% ", correct: true },
+      { text: "80%", correct: false },
+    ],
+  },
+  {
+    question:
+      "Which ocean is known for its 'Ring of Fire' due to high volcanic and earthquake activity?", //5
+    answers: [
+      { text: "Atlantic Ocean", correct: false },
+      { text: "Indian Ocean", correct: false },
+      { text: "Southern Ocean", correct: false },
+      { text: "pacific Ocean", correct: true },
+    ],
+  },
+  {
+    question: "What is the main salt found in seawater?", //6
+    answers: [
+      { text: " Calcium sulfate", correct: false },
+      { text: "Sodium chloride", correct: true },
+      { text: "Potassium bromide", correct: false },
+      { text: "Magnesium chloride", correct: false },
+    ],
+  },
+  {
+    question: "Which ocean is the smallest?", //7
+    answers: [
+      { text: "Atlantic Ocean", correct: false },
+      { text: "Indian Ocean", correct: false },
+      { text: "Southern Ocean", correct: false },
+      { text: "Arctic Ocean", correct: true },
+    ],
+  },
+  {
+    question: "Which ocean is the smallest?", //8
+    answers: [
+      { text: "Atlantic Ocean", correct: false },
+      { text: "Indian Ocean", correct: false },
+      { text: "Southern Ocean", correct: false },
+      { text: "Arctic Ocean", correct: true },
+    ],
+  },
+  {
+    question: "Which ocean is the smallest?", //9
+    answers: [
+      { text: "Atlantic Ocean", correct: false },
+      { text: "Indian Ocean", correct: false },
+      { text: "Southern Ocean", correct: false },
+      { text: "Arctic Ocean", correct: true },
+    ],
+  },
+  {
+    question: "Which ocean is the smallest?", //10
+    answers: [
+      { text: "Atlantic Ocean", correct: false },
+      { text: "Indian Ocean", correct: false },
+      { text: "Southern Ocean", correct: false },
+      { text: "Arctic Ocean", correct: true },
+    ],
+  },
+  {
+    question: "Which ocean is the smallest?", //11
+    answers: [
+      { text: "Atlantic Ocean", correct: false },
+      { text: "Indian Ocean", correct: false },
+      { text: "Southern Ocean", correct: false },
+      { text: "Arctic Ocean", correct: true },
+    ],
+  },
+  {
+    question: "Which ocean is the smallest?", //12
+    answers: [
+      { text: "Atlantic Ocean", correct: false },
+      { text: "Indian Ocean", correct: false },
+      { text: "Southern Ocean", correct: false },
+      { text: "Arctic Ocean", correct: true },
+    ],
+  },
+  {
+    question: "Which ocean is the smallest?", //13
+    answers: [
+      { text: "Atlantic Ocean", correct: false },
+      { text: "Indian Ocean", correct: false },
+      { text: "Southern Ocean", correct: false },
+      { text: "Arctic Ocean", correct: true },
+    ],
+  },
+  {
+    question: "Which ocean is the smallest?", //14
+    answers: [
+      { text: "Atlantic Ocean", correct: false },
+      { text: "Indian Ocean", correct: false },
+      { text: "Southern Ocean", correct: false },
+      { text: "Arctic Ocean", correct: true },
+    ],
+  },
+
+  {
+    question: "What is the name of the deepest part of the ocean?", //15
+    answers: [
+      { text: " Tonga Trench", correct: false },
+      { text: "Mariana Trench", correct: true },
+      { text: " Java Trench", correct: false },
+      { text: "Puerto Rico Trench", correct: false },
     ],
   },
 ];
