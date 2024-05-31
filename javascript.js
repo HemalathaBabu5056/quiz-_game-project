@@ -55,12 +55,12 @@ function showQuestion() {
   });
 }
 
-function resetState() {
-  nextButton.style.display = "none";
-  while (answerButtons.firstChild){
-    answerButtons.removeChild(answerButtons.firstChild);
-  }
-}
+// function resetState() {
+//   nextButton.style.display = "none";
+//   while (answerButtons.firstChild){
+//     answerButtons.removeChild(answerButtons.firstChild);
+//   }
+// }
 
 function selectAnswer(e) {
   const selectedBtn = e.target;
@@ -80,7 +80,50 @@ function selectAnswer(e) {
   nextButton.style.dispaly = "block";
 }
 
+function  showScore(){
+  resetState();
+  questionElement.innerHTML = "your scored ${score} out of ${questions.length}!";
+  nextButton.innerHTML = "Play Again";
+  
+}
+
+function  handleNextButton() {
+  currentQuestionIndex ++;
+  if(currentQuestionIndex < question.length){
+    showQuestion();
+  }else{
+    showScore();
+  }
+}
+
+nextButton.addEventListener("click", () => {
+  if (currentQuestionIndex < questions.length){
+    handleNextButton();
+  }
+  else{
+    startQuiz();
+  }
+})
+
 startQuiz();
+
+
+
+
+// Initialize event listeners for starting quizzes
+document.querySelectorAll('#start-quiz').forEach(button => {
+  button.addEventListener('click', (e) => {
+    e.preventDefault();
+    const topic = e.target.closest('.card').querySelector('.card-title').innerText;
+    startQuiz(topic);
+  });
+});
+
+
+
+
+
+
 
 // Questions array
 /*
