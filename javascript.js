@@ -1,3 +1,4 @@
+
 const questions = [
   {
     topic: "Ocean",
@@ -19,7 +20,48 @@ const questions = [
       { text: "Puerto Rico Trench", correct: false },
     ],
   },
+  {
+    topic: "Ocean",
+    question: "Who is the founder of Apple Inc.?",
+    answers: [
+      { text: "Steve Jobs", correct: true },
+      { text: "Bill Gates", correct: false },
+      { text: "Mark Zuckerberg", correct: false },
+      { text: "Elon Musk", correct: false },
+    ],
+  },
+  {
+    topic: "Ocean",
+    question: "What does 'WWW' stand for in terms of internet?",
+    answers: [
+      { text: "World Wide Web", correct: true },
+      { text: "Web World Wide", correct: false },
+      { text: "World Wealth Web", correct: false },
+      { text: "Wide World Web", correct: false },
+    ],
+  },
+  {
+    topic: "Ocean",
+    question: "Which continent is the driest on Earth?",
+    answers: [
+      { text: "Antarctica", correct: true },
+      { text: "Africa", correct: false },
+      { text: "Australia", correct: false },
+      { text: "Asia", correct: false },
+    ],
+  },
+  {
+    topic: "Ocean",
+    question: "What is the capital city of Brazil?",
+    answers: [
+      { text: "Brasília", correct: true },
+      { text: "Rio de Janeiro", correct: false },
+      { text: "São Paulo", correct: false },
+      { text: "Buenos Aires", correct: false },
+    ],
+  },
 ];
+
 
 // Variables to manage quiz state
 let currentQuestionIndex = 0;
@@ -38,7 +80,7 @@ function startQuiz() {
 }
 
 function showQuestion() {
-  // resetState();
+  resetState();
   let currentQuestion = questions[currentQuestionIndex];
   let questionNo = currentQuestionIndex + 1;
   questionElement.innerHTML = questionNo + ". " + currentQuestion.question;
@@ -55,12 +97,12 @@ function showQuestion() {
   });
 }
 
-// function resetState() {
-//   nextButton.style.display = "none";
-//   while (answerButtons.firstChild){
-//     answerButtons.removeChild(answerButtons.firstChild);
-//   }
-// }
+function resetState() {
+  nextButton.style.display = "none";
+  while (answerButtons.firstChild){
+    answerButtons.removeChild(answerButtons.firstChild);
+  }
+}
 
 function selectAnswer(e) {
   const selectedBtn = e.target;
@@ -79,17 +121,18 @@ function selectAnswer(e) {
   });
   nextButton.style.dispaly = "block";
 }
-
-function  showScore(){
+function showScore() {
   resetState();
-  questionElement.innerHTML = "your scored ${score} out of ${questions.length}!";
+  questionElement.innerHTML = `You scored ${score} out of ${questionsByTopic.length}!`;
   nextButton.innerHTML = "Play Again";
-  
+  //nextButton.classList.remove("hide");
+  nextButton.style.display = "block";
 }
+
 
 function  handleNextButton() {
   currentQuestionIndex ++;
-  if(currentQuestionIndex < question.length){
+  if(currentQuestionIndex < questions.length){
     showQuestion();
   }else{
     showScore();
@@ -108,8 +151,7 @@ nextButton.addEventListener("click", () => {
 startQuiz();
 
 
-
-
+/*
 // Initialize event listeners for starting quizzes
 document.querySelectorAll('#start-quiz').forEach(button => {
   button.addEventListener('click', (e) => {
@@ -119,11 +161,7 @@ document.querySelectorAll('#start-quiz').forEach(button => {
   });
 });
 
-
-
-
-
-
+*/
 
 // Questions array
 /*
