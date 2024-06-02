@@ -1,4 +1,6 @@
 
+
+
 const questions = [
   {
     topic: "Ocean",
@@ -66,11 +68,14 @@ const questions = [
 // Variables to manage quiz state
 let currentQuestionIndex = 0;
 let score = 0;
+  let currentQuizData = [];
 let selectedTopic = "";
 const questionContainer = document.getElementById("question-container");
 const questionElement = document.getElementById("question");
 const answerButtons = document.getElementById("answer-buttons");
 const nextButton = document.getElementById("next-btn");
+
+
 
 function startQuiz() {
   currentQuestionIndex = 0;
@@ -78,6 +83,7 @@ function startQuiz() {
   nextButton.innerHTML = "Next";
   showQuestion();
 }
+
 
 function showQuestion() {
   resetState();
@@ -88,6 +94,8 @@ function showQuestion() {
   currentQuestion.answers.forEach((answer) => {
     const button = document.createElement("button");
     button.innerHTML = answer.text;
+        button.classList.add("btn", "btn-outline-dark", "btn-block", "my-2");
+
     button.classList.add("btn");
     answerButtons.appendChild(button);
     if (answer.correct) {
@@ -98,40 +106,75 @@ function showQuestion() {
 }
 
 function resetState() {
-  nextButton.style.display = "none";
+  nextButton.classList.add("d-none");
   while (answerButtons.firstChild){
     answerButtons.removeChild(answerButtons.firstChild);
   }
 }
 
-function selectAnswer(e) {
-  const selectedBtn = e.target;
-  const isCorrect = selectedBtn.dataset.correct === "true";
-  if (isCorrect) {
-    selectedBtn.classList.add("correct");
+
+function selectAnswer(event) {
+  const selectedBtn = event.target;
+  const correct = selectedBtn.dataset.correct === "true";
+  if (correct) {
     score++;
-  } else {
-    selectedBtn.classList.add("incorrect");
   }
-  Array.from(answerButtons.children).forEach(button => {
-    if (button.dataset.correct === "true") {
-      button.classList.add("correct");
-    }
+  Array.from(answerButtons.children).forEach((button) => {
     button.disabled = true;
+    if (button.dataset.correct === "true") {
+      button.classList.add("btn-success");
+    } else {
+      button.classList.add("btn-danger");
+    }
   });
-  nextButton.style.dispaly = "block";
+  nextButton.classList.remove("d-none");
 }
+
+// function selectAnswer(e) {
+//   const selectedBtn = e.target;
+//   const isCorrect = selectedBtn.dataset.correct === "true";
+//   if (isCorrect) {
+//     selectedBtn.classList.add("correct");
+//     score++;
+//   }else{
+//     selectedBtn.classList.add("incorrect");
+//   }
+//   Array.from(answerButtons.children).forEach(button => {
+//      button.disabled = true;
+//     if (button.dataset.correct === "true"){
+//       button.classList.add("correct");
+//     }
+   
+//   });
+//   nextButton.style.dispaly = "block";
+// }
+// function showScore() {
+//   resetState();
+//   questionElement.innerText = `You scored ${score} out of ${questionsByTopic.length}!`;
+//   nextButton.innerText = "Play Again";
+//   nextButton.classList.remove("hide");
+//   nextButton.style.display = "block";
+// }
+
+
+// Function to show the final score
 function showScore() {
   resetState();
-  questionElement.innerHTML = `You scored ${score} out of ${questionsByTopic.length}!`;
-  nextButton.innerHTML = "Play Again";
-  //nextButton.classList.remove("hide");
-  nextButton.style.display = "block";
+  questionElement.innerText = `You scored ${score} out of ${
+    questions.filter((q) => q.topic === selectedTopic).length
+  }!`;
+  nextButton.innerText = "Restart";
+  nextButton.classList.remove("hide");
+  nextButton.addEventListener("click", () => {
+    location.href = "index.html"; // Redirect to the index page
+  });
 }
+
+
 
 
 function  handleNextButton() {
-  currentQuestionIndex ++;
+  currentQuestionIndex++;
   if(currentQuestionIndex < questions.length){
     showQuestion();
   }else{
@@ -142,26 +185,27 @@ function  handleNextButton() {
 nextButton.addEventListener("click", () => {
   if (currentQuestionIndex < questions.length){
     handleNextButton();
-  }
-  else{
+  }else{
     startQuiz();
   }
-})
-
-startQuiz();
+});
 
 
-/*
 // Initialize event listeners for starting quizzes
 document.querySelectorAll('#start-quiz').forEach(button => {
-  button.addEventListener('click', (e) => {
+  button.addEventListener('click', (event) => {
     e.preventDefault();
-    const topic = e.target.closest('.card').querySelector('.card-title').innerText;
+    const topic = event.target.closest('.card').querySelector('.card-title').innerText;
     startQuiz(topic);
   });
 });
 
-*/
+
+startQuiz();
+
+
+
+
 
 // Questions array
 /*
@@ -227,127 +271,4 @@ const questions = [
     ],
   },
   // Add more questions as needed
-];
-
-// Variables to manage quiz state
-let currentQuestionIndex = 0;
-let score = 0;
-let selectedTopic = "";
-const questionContainer = document.getElementById("question-container");
-const questionElement = document.getElementById("question");
-const answerButtonsElement = document.getElementById("answer-buttons");
-const nextButton = document.getElementById("next-btn");
-
-// Function to start the quiz for a particular topic
-function startQuiz(topic) {
-  selectedTopic = topic;
-  currentQuestionIndex = 0;
-  score = 0;
-  nextButton.classList.remove("hide");
-  showQuestion(getNextQuestion());
-}
-
-// Function to get the next question for the selected topic
-function getNextQuestion() {
-  const topicQuestions = questions.filter((q) => q.topic === selectedTopic);
-  return topicQuestions[currentQuestionIndex];
-}
-
-// Function to show a question
-function showQuestion(question) {
-  resetState();
-  questionElement.innerText = question.question;
-  question.answers.forEach((answer) => {
-    const button = document.createElement("button");
-    button.innerText = answer.text;
-    button.classList.add("btn", "btn-outline-primary", "btn-block", "my-2");
-    if (answer.correct) {
-      button.dataset.correct = answer.correct;
-    }
-    button.addEventListener("click", selectAnswer);
-    answerButtonsElement.appendChild(button);
-  });
-}
-
-// Function to reset the state for the next question
-function resetState() {
-  nextButton.classList.add("hide");
-  while (answerButtonsElement.firstChild) {
-    answerButtonsElement.removeChild(answerButtonsElement.firstChild);
-  }
-}
-
-// Function to handle answer selection
-function selectAnswer(e) {
-  const selectedButton = e.target;
-  const correct = selectedButton.dataset.correct === "true";
-  if (correct) {
-    score++;
-  }
-  Array.from(answerButtonsElement.children).forEach((button) => {
-    setStatusClass(button, button.dataset.correct);
-  });
-  if (
-    currentQuestionIndex + 1 <
-    questions.filter((q) => q.topic === selectedTopic).length
-  ) {
-    nextButton.classList.remove("hide");
-  } else {
-    nextButton.innerText = "Finish";
-    nextButton.classList.remove("hide");
-  }
-}
-
-// Function to set the status class based on correctness
-function setStatusClass(element, correct) {
-  clearStatusClass(element);
-  if (correct) {
-    element.classList.add("btn-success");
-  } else {
-    element.classList.add("btn-danger");
-  }
-}
-
-// Function to clear status classes
-function clearStatusClass(element) {
-  element.classList.remove("btn-success");
-  element.classList.remove("btn-danger");
-}
-
-// Function to handle the next button click
-nextButton.addEventListener("click", () => {
-  currentQuestionIndex++;
-  if (
-    currentQuestionIndex <
-    questions.filter((q) => q.topic === selectedTopic).length
-  ) {
-    showQuestion(getNextQuestion());
-  } else {
-    showScore();
-  }
-});
-
-// Function to show the final score
-function showScore() {
-  resetState();
-  questionElement.innerText = `You scored ${score} out of ${
-    questions.filter((q) => q.topic === selectedTopic).length
-  }!`;
-  nextButton.innerText = "Restart";
-  nextButton.classList.remove("hide");
-  nextButton.addEventListener("click", () => {
-    location.href = "index.html"; // Redirect to the index page
-  });
-}
-
-// Initialize event listeners for starting quizzes
-document.querySelectorAll("#start-quiz").forEach((button) => {
-  button.addEventListener("click", (e) => {
-    e.preventDefault();
-    const topic = e.target
-      .closest(".card")
-      .querySelector(".card-title").innerText;
-    startQuiz(topic);
-  });
-});
-*/
+];*/
