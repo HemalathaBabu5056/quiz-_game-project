@@ -221,6 +221,13 @@
     </section>
     <script>
        
+    document.querySelectorAll('.category-button').forEach(button => {
+      button.addEventListener('click', () => {
+        localStorage.setItem('selectedCategory', button.id);
+        window.location.href = 'quiz_game-page.html';
+      });
+    });
+  </script>
 
        
     </script>
