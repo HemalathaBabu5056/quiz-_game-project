@@ -1,274 +1,206 @@
-
-
-
-const questions = [
-  {
-    topic: "Ocean",
-    question: "Which ocean is the largest on Earth?",
-    answers: [
-      { text: "Pacific Ocean", correct: true },
-      { text: "Atlantic Ocean", correct: false },
-      { text: "Indian Ocean", correct: false },
-      { text: "Arctic Ocean", correct: false },
-    ],
-  },
-  {
-    topic: "Ocean",
-    question: "What is the deepest point in the ocean?",
-    answers: [
-      { text: "Mariana Trench", correct: true },
-      { text: "Sunda Trench", correct: false },
-      { text: "Java Trench", correct: false },
-      { text: "Puerto Rico Trench", correct: false },
-    ],
-  },
-  {
-    topic: "Ocean",
-    question: "Who is the founder of Apple Inc.?",
-    answers: [
-      { text: "Steve Jobs", correct: true },
-      { text: "Bill Gates", correct: false },
-      { text: "Mark Zuckerberg", correct: false },
-      { text: "Elon Musk", correct: false },
-    ],
-  },
-  {
-    topic: "Ocean",
-    question: "What does 'WWW' stand for in terms of internet?",
-    answers: [
-      { text: "World Wide Web", correct: true },
-      { text: "Web World Wide", correct: false },
-      { text: "World Wealth Web", correct: false },
-      { text: "Wide World Web", correct: false },
-    ],
-  },
-  {
-    topic: "Ocean",
-    question: "Which continent is the driest on Earth?",
-    answers: [
-      { text: "Antarctica", correct: true },
-      { text: "Africa", correct: false },
-      { text: "Australia", correct: false },
-      { text: "Asia", correct: false },
-    ],
-  },
-  {
-    topic: "Ocean",
-    question: "What is the capital city of Brazil?",
-    answers: [
-      { text: "Brasília", correct: true },
-      { text: "Rio de Janeiro", correct: false },
-      { text: "São Paulo", correct: false },
-      { text: "Buenos Aires", correct: false },
-    ],
-  },
-];
-
-
-// Variables to manage quiz state
-let currentQuestionIndex = 0;
-let score = 0;
-  let currentQuizData = [];
-let selectedTopic = "";
-const questionContainer = document.getElementById("question-container");
-const questionElement = document.getElementById("question");
-const answerButtons = document.getElementById("answer-buttons");
-const nextButton = document.getElementById("next-btn");
-
-
-
-function startQuiz() {
-  currentQuestionIndex = 0;
-  score = 0;
-  nextButton.innerHTML = "Next";
-  showQuestion();
-}
-
-
-function showQuestion() {
-  resetState();
-  let currentQuestion = questions[currentQuestionIndex];
-  let questionNo = currentQuestionIndex + 1;
-  questionElement.innerHTML = questionNo + ". " + currentQuestion.question;
-
-  currentQuestion.answers.forEach((answer) => {
-    const button = document.createElement("button");
-    button.innerHTML = answer.text;
-        button.classList.add("btn", "btn-outline-dark", "btn-block", "my-2");
-
-    button.classList.add("btn");
-    answerButtons.appendChild(button);
-    if (answer.correct) {
-      button.dataset.correct = answer.correct;
-    }
-    button.addEventListener("click", selectAnswer);
-  });
-}
-
-function resetState() {
-  nextButton.classList.add("d-none");
-  while (answerButtons.firstChild){
-    answerButtons.removeChild(answerButtons.firstChild);
-  }
-}
-
-
-function selectAnswer(event) {
-  const selectedBtn = event.target;
-  const correct = selectedBtn.dataset.correct === "true";
-  if (correct) {
-    score++;
-  }
-  Array.from(answerButtons.children).forEach((button) => {
-    button.disabled = true;
-    if (button.dataset.correct === "true") {
-      button.classList.add("btn-success");
-    } else {
-      button.classList.add("btn-danger");
-    }
-  });
-  nextButton.classList.remove("d-none");
-}
-
-// function selectAnswer(e) {
-//   const selectedBtn = e.target;
-//   const isCorrect = selectedBtn.dataset.correct === "true";
-//   if (isCorrect) {
-//     selectedBtn.classList.add("correct");
-//     score++;
-//   }else{
-//     selectedBtn.classList.add("incorrect");
-//   }
-//   Array.from(answerButtons.children).forEach(button => {
-//      button.disabled = true;
-//     if (button.dataset.correct === "true"){
-//       button.classList.add("correct");
-//     }
-   
-//   });
-//   nextButton.style.dispaly = "block";
-// }
-// function showScore() {
-//   resetState();
-//   questionElement.innerText = `You scored ${score} out of ${questionsByTopic.length}!`;
-//   nextButton.innerText = "Play Again";
-//   nextButton.classList.remove("hide");
-//   nextButton.style.display = "block";
-// }
-
-
-// Function to show the final score
-function showScore() {
-  resetState();
-  questionElement.innerText = `You scored ${score} out of ${
-    questions.filter((q) => q.topic === selectedTopic).length
-  }!`;
-  nextButton.innerText = "Restart";
-  nextButton.classList.remove("hide");
-  nextButton.addEventListener("click", () => {
-    location.href = "index.html"; // Redirect to the index page
-  });
-}
-
-
-
-
-function  handleNextButton() {
-  currentQuestionIndex++;
-  if(currentQuestionIndex < questions.length){
-    showQuestion();
-  }else{
-    showScore();
-  }
-}
-
-nextButton.addEventListener("click", () => {
-  if (currentQuestionIndex < questions.length){
-    handleNextButton();
-  }else{
-    startQuiz();
-  }
-});
-
-
-// Initialize event listeners for starting quizzes
-document.querySelectorAll('#start-quiz').forEach(button => {
-  button.addEventListener('click', (event) => {
-    e.preventDefault();
-    const topic = event.target.closest('.card').querySelector('.card-title').innerText;
-    startQuiz(topic);
-  });
-});
-
-
-startQuiz();
-
-
-
-
-
-// Questions array
-/*
-const questions = [
-  {
-    topic: "Ocean",
-    question: "Which ocean is the largest on Earth?",
-    answers: [
-      { text: "Pacific Ocean", correct: true },
-      { text: "Atlantic Ocean", correct: false },
-      { text: "Indian Ocean", correct: false },
-      { text: "Arctic Ocean", correct: false },
-    ],
-  },
-  {
-    topic: "Ocean",
-    question: "What is the deepest point in the ocean?",
-    answers: [
-      { text: "Mariana Trench", correct: true },
-      { text: "Sunda Trench", correct: false },
-      { text: "Java Trench", correct: false },
-      { text: "Puerto Rico Trench", correct: false },
-    ],
-  },
-  {
-    topic: "Technology",
-    question: "Who is the founder of Apple Inc.?",
-    answers: [
-      { text: "Steve Jobs", correct: true },
-      { text: "Bill Gates", correct: false },
-      { text: "Mark Zuckerberg", correct: false },
-      { text: "Elon Musk", correct: false },
-    ],
-  },
-  {
-    topic: "Technology",
-    question: "What does 'WWW' stand for in terms of internet?",
-    answers: [
-      { text: "World Wide Web", correct: true },
-      { text: "Web World Wide", correct: false },
-      { text: "World Wealth Web", correct: false },
-      { text: "Wide World Web", correct: false },
-    ],
-  },
-  {
-    topic: "Geography",
-    question: "Which continent is the driest on Earth?",
-    answers: [
-      { text: "Antarctica", correct: true },
-      { text: "Africa", correct: false },
-      { text: "Australia", correct: false },
-      { text: "Asia", correct: false },
-    ],
-  },
-  {
-    topic: "Geography",
-    question: "What is the capital city of Brazil?",
-    answers: [
-      { text: "Brasília", correct: true },
-      { text: "Rio de Janeiro", correct: false },
-      { text: "São Paulo", correct: false },
-      { text: "Buenos Aires", correct: false },
-    ],
-  },
-  // Add more questions as needed
-];*/
+const quizData = {
+  ocean: [
+    {
+      question: "What is the largest ocean?",
+      answers: ["Pacific", "Atlantic", "Indian", "Arctic"],
+      correct: 0,
+    },
+    {
+      question: "What is the deepest ocean?",
+      answers: ["Pacific", "Atlantic", "Indian", "Arctic"],
+      correct: 0,
+    },
+    {
+      question: "Which ocean is the smallest?",
+      answers: ["Pacific", "Atlantic", "Indian", "Arctic"],
+      correct: 3,
+    },
+    {
+      question: "Which ocean is on the east coast of the United States?",
+      answers: ["Pacific", "Atlantic", "Indian", "Arctic"],
+      correct: 1,
+    },
+    {
+      question: "Which ocean surrounds Antarctica?",
+      answers: ["Pacific", "Atlantic", "Indian", "Southern"],
+      correct: 3,
+    },
+  ],
+  technology: [
+    {
+      question: "What does HTML stand for?",
+      answers: [
+        "Hypertext Markup Language",
+        "Hyperlink and Text Markup Language",
+        "Home Tool Markup Language",
+        "Hyperlink Text Markup Language",
+      ],
+      correct: 0,
+    },
+    {
+      question: "What year was the first iPhone released?",
+      answers: ["2005", "2006", "2007", "2008"],
+      correct: 2,
+    },
+    {
+      question: "What is the name of the first electronic computer?",
+      answers: ["ENIAC", "UNIVAC", "IBM PC", "Apple I"],
+      correct: 0,
+    },
+    {
+      question: "What does CPU stand for?",
+      answers: [
+        "Central Processing Unit",
+        "Central Process Unit",
+        "Computer Personal Unit",
+        "Central Processor Unit",
+      ],
+      correct: 0,
+    },
+    {
+      question: "What is the most used programming language in 2021?",
+      answers: ["Java", "Python", "JavaScript", "C++"],
+      correct: 2,
+    },
+  ],
+  geography: [
+    {
+      question: "What is the capital of France?",
+      answers: ["Paris", "London", "Berlin", "Madrid"],
+      correct: 0,
+    },
+    {
+      question: "Which country is the largest by area?",
+      answers: ["Russia", "Canada", "China", "USA"],
+      correct: 0,
+    },
+    {
+      question: "Which is the longest river in the world?",
+      answers: ["Nile", "Amazon", "Yangtze", "Mississippi"],
+      correct: 1,
+    },
+    {
+      question: "What is the smallest country in the world?",
+      answers: ["Vatican City", "Monaco", "San Marino", "Liechtenstein"],
+      correct: 0,
+    },
+    {
+      question: "Which desert is the largest in the world?",
+      answers: ["Sahara", "Arabian", "Gobi", "Kalahari"],
+      correct: 0,
+    },
+  ],
+  "science-nature": [
+    {
+      question: "What is the chemical symbol for water?",
+      answers: ["H2O", "O2", "CO2", "H2"],
+      correct: 0,
+    },
+    {
+      question: "What planet is known as the Red Planet?",
+      answers: ["Mars", "Jupiter", "Saturn", "Venus"],
+      correct: 0,
+    },
+    {
+      question: "What is the largest mammal?",
+      answers: ["Elephant", "Blue Whale", "Giraffe", "Rhino"],
+      correct: 1,
+    },
+    {
+      question: "What gas do plants absorb from the atmosphere?",
+      answers: ["Oxygen", "Nitrogen", "Carbon Dioxide", "Hydrogen"],
+      correct: 2,
+    },
+    {
+      question: "What is the speed of light?",
+      answers: ["300,000 km/s", "150,000 km/s", "100,000 km/s", "50,000 km/s"],
+      correct: 0,
+    },
+  ],
+  "india-cultures": [
+    {
+      question: "Which festival is known as the festival of lights?",
+      answers: ["Diwali", "Holi", "Eid", "Christmas"],
+      correct: 0,
+    },
+    {
+      question: "What is the capital of India?",
+      answers: ["Mumbai", "Delhi", "Bangalore", "Kolkata"],
+      correct: 1,
+    },
+    {
+      question: "Which dance form is from Kerala?",
+      answers: ["Kathak", "Bharatanatyam", "Kathakali", "Odissi"],
+      correct: 2,
+    },
+    {
+      question: "Who is the Father of the Nation?",
+      answers: [
+        "Mahatma Gandhi",
+        "Jawaharlal Nehru",
+        "Subhas Chandra Bose",
+        "Sardar Patel",
+      ],
+      correct: 0,
+    },
+    {
+      question: "What is the national animal of India?",
+      answers: ["Lion", "Elephant", "Tiger", "Peacock"],
+      correct: 2,
+    },
+  ],
+  sports: [
+    {
+      question: "Which country won the FIFA World Cup in 2018?",
+      answers: ["Germany", "Brazil", "France", "Argentina"],
+      correct: 2,
+    },
+    {
+      question: 'Which sport is known as the "king of sports"?',
+      answers: ["Basketball", "Cricket", "Soccer", "Tennis"],
+      correct: 2,
+    },
+    {
+      question: "How many players are on a baseball team?",
+      answers: ["7", "8", "9", "10"],
+      correct: 2,
+    },
+    {
+      question: "What is the national sport of Canada?",
+      answers: ["Lacrosse", "Ice Hockey", "Basketball", "Soccer"],
+      correct: 1,
+    },
+    {
+      question: "Which sport uses a net, a racket, and a shuttlecock?",
+      answers: ["Tennis", "Badminton", "Squash", "Table Tennis"],
+      correct: 1,
+    },
+  ],
+  "food-drink": [
+    {
+      question: "What is the main ingredient in guacamole?",
+      answers: ["Tomato", "Onion", "Avocado", "Pepper"],
+      correct: 2,
+    },
+    {
+      question: "What is sushi traditionally wrapped in?",
+      answers: ["Seaweed", "Rice", "Soy Paper", "Nori"],
+      correct: 3,
+    },
+    {
+      question: "Which country is known for inventing pizza?",
+      answers: ["France", "USA", "Italy", "Spain"],
+      correct: 2,
+    },
+    {
+      question: "What is the most consumed beverage in the world?",
+      answers: ["Coffee", "Tea", "Coca-Cola", "Water"],
+      correct: 1,
+    },
+    {
+      question: "What type of fruit is a banana?",
+      answers: ["Citrus", "Berry", "Stone Fruit", "Pome"],
+      correct: 1,
+    },
+  ],
+};
