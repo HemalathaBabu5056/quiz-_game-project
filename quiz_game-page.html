@@ -17,16 +17,7 @@
       .incorrect {
         background: #f5261b;
       }
-      /* .answers button {
-      margin: 10px 0;
-      padding: 10px;
-      background-color: #4CAF50;
-      color: white;
-      border: none;
-      cursor: pointer;
-      width: 100%;
-      max-width: 300px;
-    } */
+     
       .hide {
         display: none;
       }
@@ -85,7 +76,7 @@
        
           <div class="question">${questionNo + ". " + questionData.question}</div>
           <div class="answers ">
-            ${questionData.answers.map((answer, index) => `<button class="btn btn-light" onclick="submitAnswer(${index})">${answer}</button>`).join('')}
+            ${questionData.answers.map((answer, index) => `<button class="btn btn-outline-secondary d-block mt-3 w-50 px-5" onclick="submitAnswer(${index})">${answer}</button>`).join('')}
           </div>
         `;
         nextButton.innerHTML = "Next"
