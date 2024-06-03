@@ -365,8 +365,8 @@ const quizData = {
   "india-cultures": [
     {
       question: "Which festival is known as the festival of lights?",
-      answers: ["Diwali", "Holi", "Eid", "Christmas"],
-      correct: 0,
+      answers: ["Holi", "Eid", "Diwali", "Christmas"],
+      correct: 2,
     },
     {
       question: "What is the capital of India?",
@@ -379,18 +379,73 @@ const quizData = {
       correct: 2,
     },
     {
-      question: "Who is the Father of the Nation?",
+      question: "Who is known as the Father of the Nation in India?",
       answers: [
-        "Mahatma Gandhi",
         "Jawaharlal Nehru",
         "Subhas Chandra Bose",
         "Sardar Patel",
+        "Mahatma Gandhi",
       ],
-      correct: 0,
+      correct: 3,
     },
     {
       question: "What is the national animal of India?",
       answers: ["Lion", "Elephant", "Tiger", "Peacock"],
+      correct: 2,
+    },
+    {
+      question: "Which classical dance form is associated with Tamil Nadu?",
+      answers: ["Kathak", "Bharatanatyam", "Manipuri", "Mohiniyattam"],
+      correct: 1,
+    },
+    {
+      question: "Which Indian state is known as the 'Land of the Rising Sun'?",
+      answers: ["Arunachal Pradesh", "Assam", "Nagaland", "Mizoram"],
+      correct: 0,
+    },
+    {
+      question: "Which Indian festival marks the onset of spring?",
+      answers: ["Diwali", "Holi", "Eid", "Navratri"],
+      correct: 1,
+    },
+    {
+      question: "What is the traditional dress of men in Punjab?",
+      answers: ["Lungi", "Sherwani", "Kurta-Pajama", "Dhoti"],
+      correct: 2,
+    },
+    {
+      question: "Which river is considered the holiest in India?",
+      answers: ["Yamuna", "Ganga", "Brahmaputra", "Godavari"],
+      correct: 1,
+    },
+    {
+      question: "Which Indian state is famous for the Bihu festival?",
+      answers: ["West Bengal", "Punjab", "Assam", "Gujarat"],
+      correct: 2,
+    },
+    {
+      question: "Which Indian spice is also known as 'black gold'?",
+      answers: ["Turmeric", "Pepper", "Cardamom", "Clove"],
+      correct: 1,
+    },
+    {
+      question: "What is the national flower of India?",
+      answers: ["Rose", "Lily", "Lotus", "Marigold"],
+      correct: 2,
+    },
+    {
+      question: "Who wrote the Indian national anthem?",
+      answers: [
+        "Bankim Chandra Chattopadhyay",
+        "Rabindranath Tagore",
+        "Sarojini Naidu",
+        "Allama Iqbal",
+      ],
+      correct: 1,
+    },
+    {
+      question: "Which city is known as the Silicon Valley of India?",
+      answers: ["Hyderabad", "Chennai", "Bangalore", "Pune"],
       correct: 2,
     },
   ],
@@ -401,7 +456,7 @@ const quizData = {
       correct: 2,
     },
     {
-      question: 'Which sport is known as the "king of sports"?',
+      question: "Which sport is known as the 'king of sports'?",
       answers: ["Basketball", "Cricket", "Soccer", "Tennis"],
       correct: 2,
     },
@@ -419,6 +474,68 @@ const quizData = {
       question: "Which sport uses a net, a racket, and a shuttlecock?",
       answers: ["Tennis", "Badminton", "Squash", "Table Tennis"],
       correct: 1,
+    },
+    {
+      question: "In which country did volleyball originate?",
+      answers: ["Brazil", "United States", "Italy", "India"],
+      correct: 3,
+    },
+    {
+      question: "Who holds the record for the fastest 100-meter sprint?",
+      answers: ["Usain Bolt", "Carl Lewis", "Jesse Owens", "Justin Gatlin"],
+      correct: 0,
+    },
+    {
+      question: "What is the diameter of a basketball hoop in inches?",
+      answers: ["16", "17", "18", "19"],
+      correct: 2,
+    },
+    {
+      question: "Which country is famous for sumo wrestling?",
+      answers: ["China", "Japan", "South Korea", "Mongolia"],
+      correct: 1,
+    },
+    {
+      question:
+        "What is the maximum number of clubs allowed in a golfer's bag?",
+      answers: ["10", "12", "14", "16"],
+      correct: 2,
+    },
+    {
+      question: "Who won the first Olympic marathon?",
+      answers: [
+        "Spiridon Louis",
+        "Haile Gebrselassie",
+        "Abebe Bikila",
+        "Emil Zátopek",
+      ],
+      correct: 0,
+    },
+    {
+      question: "Which tennis player has won the most Grand Slam titles?",
+      answers: [
+        "Roger Federer",
+        "Rafael Nadal",
+        "Novak Djokovic",
+        "Pete Sampras",
+      ],
+      correct: 0,
+    },
+    {
+      question: "What is the standard distance of a marathon?",
+      answers: ["26.2 miles", "13.1 miles", "10 kilometers", "50 kilometers"],
+      correct: 0,
+    },
+    {
+      question: "What is the only sport to have been played on the moon?",
+      answers: ["Soccer", "Golf", "Cricket", "Tennis"],
+      correct: 1,
+    },
+    {
+      question:
+        "Which country won the most medals at the 2016 Summer Olympics?",
+      answers: ["United States", "China", "Great Britain", "Russia"],
+      correct: 0,
     },
   ],
   "food-drink": [
@@ -446,6 +563,57 @@ const quizData = {
       question: "What type of fruit is a banana?",
       answers: ["Citrus", "Berry", "Stone Fruit", "Pome"],
       correct: 1,
+    },
+    {
+      question: "What is the primary ingredient in hummus?",
+      answers: ["Chickpeas", "Lentils", "Black Beans", "Kidney Beans"],
+      correct: 0,
+    },
+    {
+      question: "Which nut is used to make marzipan?",
+      answers: ["Almond", "Peanut", "Cashew", "Pistachio"],
+      correct: 0,
+    },
+    {
+      question: "What is the most popular type of cheese in the world?",
+      answers: ["Cheddar", "Parmesan", "Brie", "Mozzarella"],
+      correct: 3,
+    },
+    {
+      question: "Which spice is derived from the crocus flower?",
+      answers: ["Cumin", "Saffron", "Turmeric", "Paprika"],
+      correct: 1,
+    },
+    {
+      question: "What is the national dish of Spain?",
+      answers: ["Tacos", "Sushi", "Paella", "Curry"],
+      correct: 2,
+    },
+    {
+      question: "Which fruit is known as the 'king of fruits'?",
+      answers: ["Mango", "Apple", "Banana", "Pineapple"],
+      correct: 0,
+    },
+    {
+      question: "What is the main ingredient in gazpacho?",
+      answers: ["Tomato", "Cucumber", "Avocado", "Potato"],
+      correct: 0,
+    },
+    {
+      question:
+        "What is the name of the Italian dessert made of ladyfingers, coffee, and mascarpone cheese?",
+      answers: ["Tiramisu", "Panna Cotta", "Cannoli", "Gelato"],
+      correct: 0,
+    },
+    {
+      question: "What is the national drink of Mexico?",
+      answers: ["Tequila", "Margarita", "Mojito", "Pisco Sour"],
+      correct: 0,
+    },
+    {
+      question: "Which country is famous for its sauerkraut?",
+      answers: ["Germany", "France", "Italy", "Spain"],
+      correct: 0,
     },
   ],
 };
